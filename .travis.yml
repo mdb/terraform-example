@@ -9,7 +9,7 @@ env:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: deploy.sh
+    script: ./deploy.sh
     on:
       repo: mdb/terraform-example
       branch: master
