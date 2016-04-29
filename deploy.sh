@@ -6,6 +6,10 @@ terraform plan
 
 terraform apply
 
+git config user.name "TravisCI"
+
+git config user.email "mikedball@gmail.com"
+
 git checkout master
 
 git add .
