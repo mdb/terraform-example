@@ -1,21 +1,20 @@
 language: node_js
-
 node_js:
-  - 6.0.0
-
+- 6.0.0
 env:
-  secure: "CPXkeQV72hBSEEKuBixuRxZmPHvNp6E/5tgyccaBSwwuJtlK53zwx96Flb1J+qsO+l6+KqdAt2crUjqJtqnpqlNsqRPvYe9gTLbzHdzI922zjQIK/BrO3BmDEbs8Nsig7l8HmOfDDntpahEhuZKNmE20TmecYEtex3uvML69tGZAsrVn9zhTwuj+lS+lqQmBHPaj//TXqt5X27NZ2qrV1RpVnSzD3hOpPR9zormFY0W/X5+FQuwH+x59il7clbtjduO0hjHUxyity1zY1+jy5iaJmHhHwPO5vNXH3px5zv8bj4QY11VKhrwKIDE6qq4J7d9CtSwxiHksVZxEAjDrU+lATJQ2eEPHK4sAJzmVicQr8JBs/jCSRSFs7I962Y9dKs3PLo/nKUt8jjwsudvxina/8YwlqYc5JPMO6ue/eACdieoX8jHidAr+2dK6gmSftX0uGC3aE8e1vAwKByVl1JGyKQ4RNMrnMusGr7mQtJpxbrokfuhDqgtAcDb1EQ/4nRl/BJ1Ydk7Iue6van9xnj/NzjQOnUzVAiVFSFyulB5g85C1T2f0gpdtWClonjjY+le7f43Wvy8W7ABk/uieZT3DblIS4JzLqS/qspRLQCIO8tlFqP8kWCn9dXD8TMlyOXZT3XNPcOkscqSn5/uHFH0xxfhQvyMN/0zNfRKa/kQ="
-
+  secure: CPXkeQV72hBSEEKuBixuRxZmPHvNp6E/5tgyccaBSwwuJtlK53zwx96Flb1J+qsO+l6+KqdAt2crUjqJtqnpqlNsqRPvYe9gTLbzHdzI922zjQIK/BrO3BmDEbs8Nsig7l8HmOfDDntpahEhuZKNmE20TmecYEtex3uvML69tGZAsrVn9zhTwuj+lS+lqQmBHPaj//TXqt5X27NZ2qrV1RpVnSzD3hOpPR9zormFY0W/X5+FQuwH+x59il7clbtjduO0hjHUxyity1zY1+jy5iaJmHhHwPO5vNXH3px5zv8bj4QY11VKhrwKIDE6qq4J7d9CtSwxiHksVZxEAjDrU+lATJQ2eEPHK4sAJzmVicQr8JBs/jCSRSFs7I962Y9dKs3PLo/nKUt8jjwsudvxina/8YwlqYc5JPMO6ue/eACdieoX8jHidAr+2dK6gmSftX0uGC3aE8e1vAwKByVl1JGyKQ4RNMrnMusGr7mQtJpxbrokfuhDqgtAcDb1EQ/4nRl/BJ1Ydk7Iue6van9xnj/NzjQOnUzVAiVFSFyulB5g85C1T2f0gpdtWClonjjY+le7f43Wvy8W7ABk/uieZT3DblIS4JzLqS/qspRLQCIO8tlFqP8kWCn9dXD8TMlyOXZT3XNPcOkscqSn5/uHFH0xxfhQvyMN/0zNfRKa/kQ=
+  global:
+    secure: RfSZmVQxWzs14II0wkCpKBefwHAblt+7JE/RAjc+MSt53VFam1+gGA+HT+c9y9jyqIB4nTCTzGRwU7J1qaFPXFZGP/pGx81kNq378ABjR4+TBpA0OEK+b6BLNLTWkMNztA306xKhSSvbESknygVTPdAIBIIYj1SrldeaODIC96A0oiDSI5GVzGC/jEPUOSS1ollMsbvliv/LTu+eUPTrIo28YEm/avLKkYEGZhp00gQpHUXRNrCaJwJH4XLEasiQqQ5fZ4lcR4RHDXB4eRrmPwVkLE76hXidUPfLrzcG53W0KYkvAzUW/Ix4u9O05d1AQ5HeO8S40Vk8L7LxCjNHSz5PDthyO/9dWoxGh8Cv5a+nvhRM1C38uVcjY8tpzYgB6CuhVuO32eiFhyV6LnLbJ0+z99WFvG2x9CJJzI67+tiRPG0pagTtlfdt4GVxmzjSBwTkWGRgcaUSPjtnqVazgYV9ttRS9u4b7FuPY6nyiZjSaJy1SyTHlSzsXlPM4IBq1GXHv1Gtp5nyyWc8u6lqlfcaTD+0RFRVm5f7HdZO2td/uG5sVHF2WMXptRGfVUwTBp1ZQ3jjxByheWsm914iZklbDpzhJfwsaxnpTQWduGSTPPgFhEKfklJ60X/8iQuaZbcCNNs8zHYN5GT2c/KqXLIYLLPg/6W3PKAHmXbwOgk=
 before_deploy:
-  - curl -fSL "https://releases.hashicorp.com/terraform/0.6.15/terraform_0.6.15_linux_amd64.zip" -o terraform.zip
-  - sudo unzip terraform.zip -d /opt/terraform
-  - sudo ln -s /opt/terraform/terraform /usr/bin/terraform
-  - rm -f terraform.zip
-
+- curl -fSL "https://releases.hashicorp.com/terraform/0.6.15/terraform_0.6.15_linux_amd64.zip"
+  -o terraform.zip
+- sudo unzip terraform.zip -d /opt/terraform
+- sudo ln -s /opt/terraform/terraform /usr/bin/terraform
+- rm -f terraform.zip
 deploy:
-  - provider: script
-    skip_cleanup: true
-    script: ./deploy.sh
-    on:
-      repo: mdb/terraform-example
-      branch: master
+- provider: script
+  skip_cleanup: true
+  script: "./deploy.sh"
+  on:
+    repo: mdb/terraform-example
+    branch: master
