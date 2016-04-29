@@ -12,4 +12,6 @@ git add .
 
 NOW=$(TZ=America/New_York date)
 
-git push -m "tfstate as of $NOW \n\n [ci skip]"
+git commit -m "tfstate as of $NOW \n\n [ci skip]"
+
+git push origin master
