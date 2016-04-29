@@ -2,3 +2,14 @@ language: node_js
 
 node_js:
   - 6.0.0
+
+env:
+  secure: "CPXkeQV72hBSEEKuBixuRxZmPHvNp6E/5tgyccaBSwwuJtlK53zwx96Flb1J+qsO+l6+KqdAt2crUjqJtqnpqlNsqRPvYe9gTLbzHdzI922zjQIK/BrO3BmDEbs8Nsig7l8HmOfDDntpahEhuZKNmE20TmecYEtex3uvML69tGZAsrVn9zhTwuj+lS+lqQmBHPaj//TXqt5X27NZ2qrV1RpVnSzD3hOpPR9zormFY0W/X5+FQuwH+x59il7clbtjduO0hjHUxyity1zY1+jy5iaJmHhHwPO5vNXH3px5zv8bj4QY11VKhrwKIDE6qq4J7d9CtSwxiHksVZxEAjDrU+lATJQ2eEPHK4sAJzmVicQr8JBs/jCSRSFs7I962Y9dKs3PLo/nKUt8jjwsudvxina/8YwlqYc5JPMO6ue/eACdieoX8jHidAr+2dK6gmSftX0uGC3aE8e1vAwKByVl1JGyKQ4RNMrnMusGr7mQtJpxbrokfuhDqgtAcDb1EQ/4nRl/BJ1Ydk7Iue6van9xnj/NzjQOnUzVAiVFSFyulB5g85C1T2f0gpdtWClonjjY+le7f43Wvy8W7ABk/uieZT3DblIS4JzLqS/qspRLQCIO8tlFqP8kWCn9dXD8TMlyOXZT3XNPcOkscqSn5/uHFH0xxfhQvyMN/0zNfRKa/kQ="
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: deploy.sh
+    on:
+      repo: mdb/terraform-example
+      branch: master
