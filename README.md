@@ -51,7 +51,7 @@ To deploy your own:
   ...
   ```
 
-5. Replace `GH_USER_NAME`, `GH_USER_EMAIL`, `GH_REPO`, and `DOMAIN_NAME` in the `.travis.yml` with your details.
+5. Replace `GH_USER_NAME`, `GH_USER_EMAIL`, and `GH_REPO` in the `.travis.yml` with your details.
 
 6. Remove my `tfstate` files to start fresh:
 

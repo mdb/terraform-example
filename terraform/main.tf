@@ -2,12 +2,16 @@ variable "region" {
   default = "us-west-2"
 }
 
+variable "domain_name" {
+  default = "mikeball.me"
+}
+
 provider "aws" {
   region = "${var.region}"
 }
 
 resource "aws_s3_bucket" "blog" {
-  bucket = "${var.DOMAIN_NAME}"
+  bucket = "${var.domain_name}"
   region = "${var.region}"
   acl = "public-read"
   website {
