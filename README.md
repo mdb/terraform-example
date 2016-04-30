@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mdb/terraform-example.svg?branch=master)](https://travis-ci.org/mdb/terraform-example)
+
 # terraform-example
 
 An reference repo demonstrating how to continuously deploy via [terraform](http://terraform.io)
