@@ -1,5 +1,5 @@
 variable "domain_name" {
-  default = "${join("", var.DOMAIN_NAME)}""
+  default = "${join("", var.DOMAIN_NAME)}"
 }
 
 variable "region" {
