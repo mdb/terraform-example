@@ -5,7 +5,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
-    "test": "gulp build"
+    "test": "gulp build && ls dist/assets/stylesheets"
   },
   "devDependencies": {
     "del": "^0.1.3",
