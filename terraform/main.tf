@@ -63,6 +63,28 @@ resource "aws_s3_bucket_object" "error_file" {
   ]
 }
 
+resource "aws_s3_bucket_object" "css_file" {
+  bucket = "${var.domain_name}"
+  source = "../dist/assets/stylesheets/application.css"
+  key = "assets/stylesheets/application.css"
+  etag = "${md5(file("../dist/assets/stylesheets/application.css"))}"
+  content_type = "text/css"
+  depends_on = [
+    "aws_s3_bucket.blog"
+  ]
+}
+
+resource "aws_s3_bucket_object" "image_file" {
+  bucket = "${var.domain_name}"
+  source = "../dist/assets/images/scape_long.png"
+  key = "assets/images/scape_long.png"
+  etag = "${md5(file("../dist/assets/images/scape_long.png"))}"
+  content_type = "image/png"
+  depends_on = [
+    "aws_s3_bucket.blog"
+  ]
+}
+
 resource "aws_route53_zone" "primary" {
   name = "${var.domain_name}"
 }
