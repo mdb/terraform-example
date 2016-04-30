@@ -1,7 +1,3 @@
-variable "domain_name" {
-  default = "${join("", var.DOMAIN_NAME)}"
-}
-
 variable "region" {
   default = "us-west-2"
 }
@@ -11,7 +7,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "blog" {
-  bucket = "${var.domain_name}"
+  bucket = "${var.DOMAIN_NAME}"
   region = "${var.region}"
   acl = "public-read"
   website {
@@ -26,23 +22,23 @@ resource "aws_s3_bucket" "blog" {
     "Effect": "Allow",
     "Principal": "*",
     "Action": "s3:GetObject",
-    "Resource": ["arn:aws:s3:::${var.domain_name}/*"]
+    "Resource": ["arn:aws:s3:::${var.DOMAIN_NAME}/*"]
   }]
 }
 EOF
 }
 
 resource "aws_s3_bucket" "wwwblog" {
-  bucket = "www.${var.domain_name}"
+  bucket = "www.${var.DOMAIN_NAME}"
   region = "${var.region}"
   acl = "public-read"
   website {
-    redirect_all_requests_to = "${var.domain_name}"
+    redirect_all_requests_to = "${var.DOMAIN_NAME}"
   }
 }
 
 resource "aws_s3_bucket_object" "index_file" {
-  bucket = "${var.domain_name}"
+  bucket = "${var.DOMAIN_NAME}"
   source = "../dist/index.html"
   key = "index.html"
   etag = "${md5(file("../dist/index.html"))}"
@@ -53,7 +49,7 @@ resource "aws_s3_bucket_object" "index_file" {
 }
 
 resource "aws_s3_bucket_object" "error_file" {
-  bucket = "${var.domain_name}"
+  bucket = "${var.DOMAIN_NAME}"
   source = "../dist/error.html"
   key = "error.html"
   etag = "${md5(file("../dist/error.html"))}"
@@ -64,12 +60,12 @@ resource "aws_s3_bucket_object" "error_file" {
 }
 
 resource "aws_route53_zone" "primary" {
-  name = "${var.domain_name}"
+  name = "${var.DOMAIN_NAME}"
 }
 
 resource "aws_route53_record" "blog" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name = "${var.domain_name}"
+  name = "${var.DOMAIN_NAME}"
   type = "A"
   alias {
     name = "${aws_s3_bucket.blog.website_domain}"
