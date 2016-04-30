@@ -26,23 +26,23 @@ resource "aws_s3_bucket" "blog" {
     "Effect": "Allow",
     "Principal": "*",
     "Action": "s3:GetObject",
-    "Resource": ["arn:aws:s3:::${var.DOMAIN_NAME}/*"]
+    "Resource": ["arn:aws:s3:::${var.domain_name}/*"]
   }]
 }
 EOF
 }
 
 resource "aws_s3_bucket" "wwwblog" {
-  bucket = "www.${var.DOMAIN_NAME}"
+  bucket = "www.${var.domain_name}"
   region = "${var.region}"
   acl = "public-read"
   website {
-    redirect_all_requests_to = "${var.DOMAIN_NAME}"
+    redirect_all_requests_to = "${var.domain_name}"
   }
 }
 
 resource "aws_s3_bucket_object" "index_file" {
-  bucket = "${var.DOMAIN_NAME}"
+  bucket = "${var.domain_name}"
   source = "../dist/index.html"
   key = "index.html"
   etag = "${md5(file("../dist/index.html"))}"
@@ -53,7 +53,7 @@ resource "aws_s3_bucket_object" "index_file" {
 }
 
 resource "aws_s3_bucket_object" "error_file" {
-  bucket = "${var.DOMAIN_NAME}"
+  bucket = "${var.domain_name}"
   source = "../dist/error.html"
   key = "error.html"
   etag = "${md5(file("../dist/error.html"))}"
@@ -64,12 +64,12 @@ resource "aws_s3_bucket_object" "error_file" {
 }
 
 resource "aws_route53_zone" "primary" {
-  name = "${var.DOMAIN_NAME}"
+  name = "${var.domain_name}"
 }
 
 resource "aws_route53_record" "blog" {
   zone_id = "${aws_route53_zone.primary.zone_id}"
-  name = "${var.DOMAIN_NAME}"
+  name = "${var.domain_name}"
   type = "A"
   alias {
     name = "${aws_s3_bucket.blog.website_domain}"
