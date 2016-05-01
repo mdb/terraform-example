@@ -55,18 +55,20 @@ To deploy your own:
 
 5. Replace `GH_USER_NAME`, `GH_USER_EMAIL`, and `GH_REPO` in the `.travis.yml` with your details.
 
-6. Remove my `tfstate` files to start fresh:
+6. Replace the `domain` var in [`terraform/main.tf`](https://github.com/mdb/terraform-example/blob/master/terraform/main.tf#L6) with your domain name.
+
+7. Remove my `tfstate` files to start fresh:
 
   ```
   $ git rm terraform/terraform.tfstate*
   $ git commit -m 'removed mdb tfstate'
   ```
 
-7. Push & deploy:
+8. Push & deploy:
 
   ```
   $ git push origin master
   ```
 
-8. Note that you may need to point the DNS servers associated with `your-domain.com` to those dynamically assigned to
+9. Note that you may need to point the DNS servers associated with `your-domain.com` to those dynamically assigned to
 your A record by AWS. For example, my A record [uses these DNS servers](https://github.com/mdb/terraform-example/blob/master/terraform/terraform.tfstate#L48).
