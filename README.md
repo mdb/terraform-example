@@ -2,7 +2,7 @@
 
 # terraform-example
 
-An reference repo demonstrating how to continuously deploy via [terraform](http://terraform.io)
+A reference repo demonstrating how to continuously deploy via [terraform](http://terraform.io)
 from [TravisCI](https://travis-ci.org/mdb/terraform-example).
 
 Via TravisCI (or locally), use Node.js to compile a static website; use Terraform to:
