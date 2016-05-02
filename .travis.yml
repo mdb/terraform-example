@@ -21,7 +21,7 @@ install:
   - npm install
 
 script:
-  - npm build
+  - npm run build
 
 # install terraform
 before_deploy:
